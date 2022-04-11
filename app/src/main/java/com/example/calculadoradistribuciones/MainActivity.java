@@ -36,6 +36,19 @@ public class MainActivity extends AppCompatActivity {
 
         TextView resultLabel = findViewById(R.id.displayResultado);
         resultLabel.setText(stringResult);
+
+        //Calculo la media
+        double media = n*p;
+        String stringMedia = media+"";
+        TextView mediaLabel = findViewById(R.id.displayMedia);
+        mediaLabel.setText(stringMedia);
+
+        //Calculo la varianza
+        double varianza = n*p*(1-p);
+        String stringVarianza = varianza+"";
+        TextView varianzaLabel = findViewById(R.id.displayVarianza);
+        varianzaLabel.setText(stringVarianza);
+
     }
 
     public static double calculoBinomialEQ(int n, double p, int x){

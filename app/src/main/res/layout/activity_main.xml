@@ -31,7 +31,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <TextView
             android:id="@+id/textView2"
@@ -48,7 +48,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="0dp"
             android:ems="10"
-            android:hint="n"
+            android:hint="n (repeticiones)"
             android:inputType="number" />
 
         <EditText
@@ -58,7 +58,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="0dp"
             android:ems="10"
-            android:hint="p"
+            android:hint="p (probabilidad)"
             android:inputType="numberDecimal" />
     </LinearLayout>
 
@@ -124,28 +124,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutCalculo" />
 
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Resultado"
-        android:textSize="24sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.85"
+        tools:visibility="visible">
 
-    <TextView
-        android:id="@+id/displayResultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/resultadoLabel"
-        android:textColor="#66BB6A"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Resultado: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/displayResultado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resultadoLabel"
+                android:textColor="@color/purple_500"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Media: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/displayMedia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resultadoLabel"
+                android:textColor="@color/purple_500"
+                android:textSize="20sp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Varianza: "
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/displayVarianza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/resultadoLabel"
+                android:textColor="@color/purple_500"
+                android:textSize="20sp" />
+        </TableRow>
+
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
