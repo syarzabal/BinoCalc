@@ -76,29 +76,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="P( X " />
+            android:text="P( X "
+            android:textSize="24sp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/labelOperador"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="=" />
+            android:text="@string/operadorActual"
+            android:textColor="#000000"
+            android:textSize="24sp" />
 
         <EditText
             android:id="@+id/campoNumeroOperacion"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=")" />
+            android:text=")"
+            android:textSize="24sp" />
     </LinearLayout>
 
     <TextView
@@ -113,19 +118,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutPropiedades" />
 
-    <Button
-        android:id="@+id/bCalcular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="calcularBin"
-        android:text="Calcular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutCalculo" />
-
     <TableLayout
-        android:id="@+id/tableLayout"
+        android:id="@+id/tableLayoutResultados"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -200,5 +194,45 @@
         </TableRow>
 
     </TableLayout>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayoutResultados"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutCalculo"
+        app:layout_constraintVertical_bias="0.22000003">
+
+        <Button
+            android:id="@+id/bCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="calcularBin"
+            android:text="Calcular" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Operador:" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

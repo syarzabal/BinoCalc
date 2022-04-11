@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="operadores">
+        <item>igual</item>
+        <item>menor/igual</item>
+        <item>menor</item>
+        <item>mayor/igual</item>
+        <item>mayor</item>
+        <item>distinto</item>
+    </string-array>
+
+</resources>
