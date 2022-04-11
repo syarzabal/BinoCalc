@@ -55,11 +55,11 @@
             android:id="@+id/campoProbabilidad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
             android:layout_gravity="center"
+            android:layout_marginStart="0dp"
             android:ems="10"
             android:hint="p"
-            android:inputType="number" />
+            android:inputType="numberDecimal" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,17 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="P(" />
-
-        <EditText
-            android:id="@+id/editTextNumber5"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="number"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="P( X " />
 
         <TextView
             android:id="@+id/textView5"
@@ -96,8 +86,8 @@
             android:text="=" />
 
         <EditText
-            android:id="@+id/editTextNumber6"
-            android:layout_width="100dp"
+            android:id="@+id/campoNumeroOperacion"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
@@ -124,9 +114,10 @@
         app:layout_constraintTop_toBottomOf="@+id/layoutPropiedades" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bCalcular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="calcularBin"
         android:text="Calcular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -146,10 +137,12 @@
         app:layout_constraintVertical_bias="0.8" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/displayResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/resultadoLabel"
+        android:textColor="#66BB6A"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

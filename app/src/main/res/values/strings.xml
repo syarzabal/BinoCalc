@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CalculadoraDistribuciones</string>
+    <string name="resultadoLabel">resultado ira aqui</string>
 </resources>
