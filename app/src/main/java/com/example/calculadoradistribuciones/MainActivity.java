@@ -56,22 +56,23 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         double result=0;
 
-        //TODO: no funcionan bien las operaciones
+        //TODO: arreglar la notación de los decimales (no quiero un 9.348376E-4)
+        //TODO: no funciona bien la operacion DISTINTO
         switch (operadorActual){
             case MENORIGUAL:
                 result = calculoBinomialLTEQ(n, p, x);
                 break;
             case MENOR:
-                result = calculoBinomialLTEQ(n-1, p, x);
+                result = calculoBinomialLTEQ(n, p, x-1);
                 break;
             case MAYOR:
                 result = 1 - calculoBinomialLTEQ(n, p, x);
                 break;
             case MAYORIGUAL:
-                result = 1 - calculoBinomialLTEQ(n-1, p, x);
+                result = 1 - calculoBinomialLTEQ(n, p, x-1);
                 break;
             case DISTINTO:
-                result = calculoBinomialLTEQ(n-1, p, x) + 1 - calculoBinomialEQ(n, p, x);
+                result = calculoBinomialLTEQ(n, p, x-1) + ( 1 - calculoBinomialEQ(n, p, x) );
                 break;
             default:
                 result = calculoBinomialEQ(n, p, x);
@@ -110,8 +111,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     public static double calculoBinomialLTEQ(int n, double p, int x){
         double result=0;
-        for(int i=n; i>=0; i--){
-            result += calculoBinomialEQ(i, p, x);
+        for(int i=x; i>=0; i--){
+            result += calculoBinomialEQ(n, p, i);
         }
         return result;
     }// calcula P(X<=x) en una Binomial B(n,p)
