@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CalculadoraDistribuciones</string>
+    <string name="app_name">BinoCalc</string>
     <string name="resultadoLabel">El resultado irá aquí</string>
     <string name="operadorActual">=</string>
 </resources>

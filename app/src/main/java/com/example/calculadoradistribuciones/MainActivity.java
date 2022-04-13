@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(R.layout.activity_main);
         Button bCalcular = findViewById(R.id.bCalcular);
 
-        //Inicialización del menú selector de operadores
+        //Selector de operadores
         spinnerOperadores = findViewById(R.id.spinner);
         String[] operadores = getResources().getStringArray(R.array.operadores);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, operadores);
@@ -42,78 +42,63 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     public void calcularBin(View view){
-        try{
-            EditText nEditText = findViewById(R.id.campoNRepeticiones);
-            String nString = nEditText.getText().toString();
-            int n = Integer.parseInt(nString);
+        EditText nEditText = findViewById(R.id.campoNRepeticiones);
+        String nString = nEditText.getText().toString();
+        int n = Integer.parseInt(nString);
 
-            EditText pEditText = findViewById(R.id.campoProbabilidad);
-            String pString = pEditText.getText().toString();
-            double p = Double.parseDouble(pString);
+        EditText pEditText = findViewById(R.id.campoProbabilidad);
+        String pString = pEditText.getText().toString();
+        double p = Double.parseDouble(pString);
 
-            if(p>1 || p<0) throw new NonValidPValueException("Valor de p no valido");
+        EditText xEditText = findViewById(R.id.campoNumeroOperacion);
+        String xString = xEditText.getText().toString();
+        int x = Integer.parseInt(xString);
 
+        double result=0;
 
-            EditText xEditText = findViewById(R.id.campoNumeroOperacion);
-            String xString = xEditText.getText().toString();
-            int x = Integer.parseInt(xString);
-
-
-            double result=0;
-
-            //TODO: arreglar la notación de los decimales (no quiero un 9.348376E-4)
-            switch (operadorActual){
-                case MENORIGUAL:
-                    result = calculoBinomialLTEQ(n, p, x);
-                    break;
-                case MENOR:
-                    result = calculoBinomialLTEQ(n, p, x-1);
-                    break;
-                case MAYOR:
-                    result = 1 - calculoBinomialLTEQ(n, p, x);
-                    break;
-                case MAYORIGUAL:
-                    result = 1 - calculoBinomialLTEQ(n, p, x-1);
-                    break;
-                case DISTINTO:
-                    result = 1 - calculoBinomialEQ(n, p, x);
-                    break;
-                default:
-                    result = calculoBinomialEQ(n, p, x);
-                    break;
-            }
-
-
-
-            String stringResult = result+"";
-
-            TextView resultLabel = findViewById(R.id.displayResultado);
-            resultLabel.setText(stringResult);
-
-            //Calculo la media
-            double media = n*p;
-            String stringMedia = media+"";
-            TextView mediaLabel = findViewById(R.id.displayMedia);
-            mediaLabel.setText(stringMedia);
-
-            //Calculo la varianza
-            double varianza = n*p*(1-p);
-            String stringVarianza = varianza+"";
-            TextView varianzaLabel = findViewById(R.id.displayVarianza);
-            varianzaLabel.setText(stringVarianza);
-
-            layoutResultados.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(),"¡Calculado!",Toast.LENGTH_SHORT).show();
-
+        //TODO: arreglar la notación de los decimales (no quiero un 9.348376E-4)
+        //TODO: no funciona bien la operacion DISTINTO
+        switch (operadorActual){
+            case MENORIGUAL:
+                result = calculoBinomialLTEQ(n, p, x);
+                break;
+            case MENOR:
+                result = calculoBinomialLTEQ(n, p, x-1);
+                break;
+            case MAYOR:
+                result = 1 - calculoBinomialLTEQ(n, p, x);
+                break;
+            case MAYORIGUAL:
+                result = 1 - calculoBinomialLTEQ(n, p, x-1);
+                break;
+            case DISTINTO:
+                result = calculoBinomialLTEQ(n, p, x-1) + ( 1 - calculoBinomialEQ(n, p, x) );
+                break;
+            default:
+                result = calculoBinomialEQ(n, p, x);
+                break;
         }
-        catch (NonValidPValueException e){
-            Toast.makeText(getApplicationContext(),"La probabilidad debe estar entre 0 y 1",Toast.LENGTH_SHORT).show();
-            layoutResultados.setVisibility(View.INVISIBLE);
-        }
-        catch (Exception e) {
-            Toast.makeText(getApplicationContext(),"Faltan campos por rellenar",Toast.LENGTH_SHORT).show();
-            layoutResultados.setVisibility(View.INVISIBLE);
-        }
+
+
+        String stringResult = result+"";
+
+        TextView resultLabel = findViewById(R.id.displayResultado);
+        resultLabel.setText(stringResult);
+
+        //Calculo la media
+        double media = n*p;
+        String stringMedia = media+"";
+        TextView mediaLabel = findViewById(R.id.displayMedia);
+        mediaLabel.setText(stringMedia);
+
+        //Calculo la varianza
+        double varianza = n*p*(1-p);
+        String stringVarianza = varianza+"";
+        TextView varianzaLabel = findViewById(R.id.displayVarianza);
+        varianzaLabel.setText(stringVarianza);
+
+        layoutResultados.setVisibility(View.VISIBLE);
+        Toast.makeText(getApplicationContext(),"¡Calculado!",Toast.LENGTH_SHORT).show();
 
     }
 
